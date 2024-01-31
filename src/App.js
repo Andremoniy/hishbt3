@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+    import './App.css';
+    import useActivity from './hooks/useActivity';
+    import useChuckNorrisFacts from './hooks/useChuckNorrisFacts';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    function App() {
+      const { activity } = useActivity();
+      const { chuckNorrisFact } = useChuckNorrisFacts(activity);
+      return (
+        <div className="App">
+          <header className="App-header">
+            <p>
+              How about you {activity}?
+            </p>
+            <p>
+              BTW, {chuckNorrisFact}
+            </p>
+          </header>
+        </div>
+      );
+    }
 
-export default App;
+    export default App;
